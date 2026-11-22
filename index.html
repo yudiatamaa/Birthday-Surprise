@@ -68,6 +68,69 @@
     footer{text-align:center;padding:30px;color:#9b8b7a;font-size:10px;letter-spacing:.15em}
     @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     @media(max-width:700px){section{padding:75px 7%}.gallery{grid-template-columns:1fr;max-width:300px;margin:auto;gap:24px}.polaroid:nth-child(2){margin-top:0}.story{padding-left:23px}.story-item:before{left:-29px}header{padding:18px 6%}}
+  .final-scene {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 25px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(45, 35, 65, 0.15),
+      rgba(55, 35, 55, 0.45)
+    ),
+    linear-gradient(
+      180deg,
+      #f7b58b 0%,
+      #e98c83 35%,
+      #a65d78 70%,
+      #493b60 100%
+    );
+  color: #fffaf5;
+}
+
+.final-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 1;
+}
+
+.final-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 11px;
+  margin-bottom: 25px;
+  opacity: 0.85;
+}
+
+.final-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 7vw, 65px);
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.final-content p {
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.final-highlight {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px !important;
+  margin-top: 35px;
+  font-style: italic;
+}
+
+.final-signature {
+  margin-top: 45px;
+  letter-spacing: 1px;
+  font-size: 13px !important;
+}
   </style>
 </head>
 <body>
@@ -262,5 +325,15 @@
     document.getElementById('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}});
     document.getElementById('secretBtn').addEventListener('click',()=>{document.getElementById('secretText').classList.add('show');document.getElementById('secretBtn').style.display='none'});
   </script>
+<section class="final-scene">
+  <div class="final-content">
+    <p class="final-eyebrow">A little promise for tomorrow</p>
+    <h2>Our Story Continues</h2>
+    <p>This is not the end of our story.</p>
+    <p>It's just another beautiful chapter waiting to be written.</p>
+    <p class="final-highlight">Let's keep growing together. ♡</p>
+    <p class="final-signature">Forever grateful to have you, Sayangku.</p>
+  </div>
+</section>
 </body>
 </html>
