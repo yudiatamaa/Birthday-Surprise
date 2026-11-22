@@ -223,7 +223,7 @@
         <h2>A secret message</h2>
         <p>Some things are better when discovered.</p>
         <div class="hidden-message">
-          <button class="outline-btn" id="secretBtn">Tap to reveal</button>
+          <button class="outline-btn" id="secretBtn" onclick="document.getElementById('secretText').classList.add('show'); this.style.display='none'">Tap to reveal</button>
           <p id="secretText">Of all the places I could be, my favorite is wherever you are. ♡</p>
         </div>
       </div>
