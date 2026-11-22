@@ -68,6 +68,17 @@
     footer{text-align:center;padding:30px;color:#9b8b7a;font-size:10px;letter-spacing:.15em}
     @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     @media(max-width:700px){section{padding:75px 7%}.gallery{grid-template-columns:1fr;max-width:300px;margin:auto;gap:24px}.polaroid:nth-child(2){margin-top:0}.story{padding-left:23px}.story-item:before{left:-29px}header{padding:18px 6%}}
+#secretText {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 1s ease, max-height 1s ease;
+}
+
+#secretText.show {
+  opacity: 1;
+  max-height: 200px;
+}
   </style>
 </head>
 <body>
