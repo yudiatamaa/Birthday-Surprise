@@ -134,15 +134,43 @@
   </style>
 </head>
 <body>
-  <div class="intro" id="intro">
-    <div class="intro-inner">
-      <div class="eyebrow">A little something, made with love</div>
-      <h1>For My<br><em>Favorite Person</em></h1>
-      <p>A little world made just for you.</p>
-      <button class="open-btn" id="openSite">Open your surprise&nbsp; ♡</button>
-    </div>
-  </div>
+  
+<div class="intro" id="intro">
+  <div class="intro-inner">
+    <div class="eyebrow">A little surprise is waiting</div>
 
+    <h1>For My<br><em>Favorite Person</em></h1>
+
+    <p>Your little world of love will open in...</p>
+
+    <div class="count-grid" id="lockCountdown">
+      <div>
+        <span class="count-num" id="lockDays">--</span>
+        <span class="count-label">Days</span>
+      </div>
+      <div>
+        <span class="count-num" id="lockHours">--</span>
+        <span class="count-label">Hours</span>
+      </div>
+      <div>
+        <span class="count-num" id="lockMinutes">--</span>
+        <span class="count-label">Minutes</span>
+      </div>
+      <div>
+        <span class="count-num" id="lockSeconds">--</span>
+        <span class="count-label">Seconds</span>
+      </div>
+    </div>
+
+    <p style="margin-top:35px;font-size:13px;">
+      November 29, 2026 · 00.00 WIB
+    </p>
+
+    <button class="open-btn" id="openSite" style="display:none;">
+      Open your surprise ♡
+    </button>
+  </div>
+</div>
   <main class="site" id="site">
     <header>
       <div class="brand">For My Favorite Person</div>
@@ -305,9 +333,41 @@
     <source src="./lagu_ossy.mp3" type="audio/mpeg">
   </audio>
   <script>
-    const intro=document.getElementById('intro'), site=document.getElementById('site');
-    document.getElementById('openSite').addEventListener('click',()=>{intro.classList.add('hide');site.classList.add('visible')});
-    const target=new Date('2026-11-29T00:00:00+07:00').getTime();
+    
+const intro=document.getElementById('intro');
+const site=document.getElementById('site');
+const target=new Date('2026-11-29T00:00:00+07:00').getTime();
+
+const openButton=document.getElementById('openSite');
+const lockCountdown=document.getElementById('lockCountdown');
+
+function updateLockCountdown(){
+  const diff=Math.max(0,target-Date.now());
+
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+
+  document.getElementById('lockDays').textContent=String(d).padStart(2,'0');
+  document.getElementById('lockHours').textContent=String(h).padStart(2,'0');
+  document.getElementById('lockMinutes').textContent=String(m).padStart(2,'0');
+  document.getElementById('lockSeconds').textContent=String(s).padStart(2,'0');
+
+  if(diff<=0){
+    lockCountdown.style.display='none';
+    openButton.style.display='inline-block';
+  }
+}
+
+updateLockCountdown();
+setInterval(updateLockCountdown,1000);
+
+openButton.addEventListener('click',()=>{
+  intro.classList.add('hide');
+  site.classList.add('visible');
+});
+    
     function updateCountdown(){
       let diff=target-Date.now();
       if(diff<0) diff=0;
